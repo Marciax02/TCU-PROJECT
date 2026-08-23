@@ -1,0 +1,15 @@
+# Archivos con variables o credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
+
+# Archivos temporales del sistema y del editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+*.log

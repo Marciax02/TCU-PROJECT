@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pura Ruta: ideas sencillas para descubrir Costa Rica de manera responsable.">
+    <title>Pura Ruta | Descubrí Costa Rica</title>
+
+    <!-- Fuente web y hoja de estilos externa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+    <header class="encabezado">
+        <nav class="navegacion contenedor" aria-label="Navegación principal">
+            <a class="logo" href="#inicio" aria-label="Ir al inicio de Pura Ruta">
+                <span class="logo-icono">◉</span>
+                Pura<span>Ruta</span>
+            </a>
+
+            <button class="boton-menu" id="botonMenu" type="button" aria-label="Abrir menú" aria-controls="menuNavegacion" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="menu-navegacion" id="menuNavegacion">
+                <a href="#inicio">Inicio</a>
+                <a href="#destinos">Destinos</a>
+                <a href="#experiencias">Experiencias</a>
+                <a href="#planear">Planear</a>
+                <a class="enlace-guardados" href="#mi-ruta">
+                    Mi ruta <span id="cantidadGuardados">0</span>
+                </a>
+                <button class="boton-tema" id="botonTema" type="button" aria-label="Activar modo oscuro">☾</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="contenido">
+        <section class="hero" id="inicio">
+            <div class="hero-fondo"></div>
+            <div class="hero-contenido contenedor">
+                <p class="etiqueta">Turismo local y responsable</p>
+                <h1>Hay un país entero<br>esperando cerca.</h1>
+                <p class="hero-texto">
+                    Encontrá naturaleza, cultura y aventura en rutas pensadas para disfrutar Costa Rica a tu ritmo.
+                </p>
+                <div class="hero-botones">
+                    <a class="boton boton-principal" href="#destinos">Explorar rutas</a>
+                    <a class="boton boton-secundario" href="#experiencias">Ver experiencias</a>
+                </div>
+
+                <div class="hora-local" aria-live="polite">
+                    <span class="punto-activo"></span>
+                    <div>
+                        <strong id="horaCostaRica">--:--:--</strong>
+                        <small id="fechaCostaRica">Hora de Costa Rica</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion destinos" id="destinos">
+            <div class="contenedor">
+                <div class="titulo-seccion">
+                    <div>
+                        <p class="etiqueta etiqueta-verde">Elegidos para vos</p>
+                        <h2>Rutas destacadas</h2>
+                    </div>
+                    <p>Tres paisajes, tres formas distintas de vivir la pura vida.</p>
+                </div>
+
+                <div class="carrusel" id="carrusel" aria-roledescription="carrusel" aria-label="Rutas destacadas">
+                    <div class="pista-carrusel">
+                        <article class="diapositiva diapositiva-arenal activa" aria-hidden="false">
+                            <div class="contenido-diapositiva">
+                                <span class="numero-ruta">01</span>
+                                <p class="categoria">Montaña · Aventura</p>
+                                <h3>La Fortuna y Arenal</h3>
+                                <p>Senderos, aguas termales y vistas al volcán en una escapada llena de energía.</p>
+                                <a href="#experiencias">Descubrir la ruta <span>→</span></a>
+                            </div>
+                        </article>
+
+                        <article class="diapositiva diapositiva-monteverde" aria-hidden="true">
+                            <div class="contenido-diapositiva">
+                                <span class="numero-ruta">02</span>
+                                <p class="categoria">Bosque · Naturaleza</p>
+                                <h3>Monteverde</h3>
+                                <p>Caminá entre nubes, puentes colgantes y una biodiversidad que sorprende a cada paso.</p>
+                                <a href="#experiencias">Descubrir la ruta <span>→</span></a>
+                            </div>
+                        </article>
+
+                        <article class="diapositiva diapositiva-caribe" aria-hidden="true">
+                            <div class="contenido-diapositiva">
+                                <span class="numero-ruta">03</span>
+                                <p class="categoria">Playa · Cultura</p>
+                                <h3>Caribe Sur</h3>
+                                <p>Mar turquesa, sabor caribeño y tardes tranquilas entre Cahuita y Puerto Viejo.</p>
+                                <a href="#experiencias">Descubrir la ruta <span>→</span></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button class="control-carrusel anterior" id="anterior" type="button" aria-label="Ver ruta anterior">←</button>
+                    <button class="control-carrusel siguiente" id="siguiente" type="button" aria-label="Ver ruta siguiente">→</button>
+
+                    <div class="indicadores" aria-label="Elegir una ruta">
+                        <button class="indicador activo" type="button" data-indice="0" aria-label="Ir a La Fortuna" aria-current="true"></button>
+                        <button class="indicador" type="button" data-indice="1" aria-label="Ir a Monteverde" aria-current="false"></button>
+                        <button class="indicador" type="button" data-indice="2" aria-label="Ir al Caribe Sur" aria-current="false"></button>
+                    </div>
+                    <p class="estado-carrusel" id="estadoCarrusel" aria-live="polite">Ruta 1 de 3: La Fortuna y Arenal</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion experiencias" id="experiencias">
+            <div class="contenedor">
+                <div class="titulo-seccion titulo-centrado">
+                    <div>
+                        <p class="etiqueta etiqueta-verde">Armá tu propia aventura</p>
+                        <h2>Experiencias para recordar</h2>
+                    </div>
+                    <p>Guardá tus favoritas y construí una lista personal para tu próximo paseo.</p>
+                </div>
+
+                <div class="galeria-experiencias">
+                    <article class="tarjeta-experiencia">
+                        <div class="icono-experiencia icono-volcan">▲</div>
+                        <p class="categoria-tarjeta">Aventura</p>
+                        <h3>Caminata al volcán</h3>
+                        <p>Un recorrido entre antiguos senderos de lava y bosque tropical.</p>
+                        <button class="boton-guardar" type="button" data-id="volcan" data-nombre="Caminata al volcán" aria-pressed="false">
+                            <span>♡</span> Guardar
+                        </button>
+                    </article>
+
+                    <article class="tarjeta-experiencia">
+                        <div class="icono-experiencia icono-cafe">●</div>
+                        <p class="categoria-tarjeta">Cultura</p>
+                        <h3>Ruta del café</h3>
+                        <p>Conocé el proceso del grano a la taza junto a productores locales.</p>
+                        <button class="boton-guardar" type="button" data-id="cafe" data-nombre="Ruta del café" aria-pressed="false">
+                            <span>♡</span> Guardar
+                        </button>
+                    </article>
+
+                    <article class="tarjeta-experiencia">
+                        <div class="icono-experiencia icono-mar">≈</div>
+                        <p class="categoria-tarjeta">Relax</p>
+                        <h3>Atardecer en el Pacífico</h3>
+                        <p>Una tarde de arena, brisa y colores frente al océano.</p>
+                        <button class="boton-guardar" type="button" data-id="pacifico" data-nombre="Atardecer en el Pacífico" aria-pressed="false">
+                            <span>♡</span> Guardar
+                        </button>
+                    </article>
+
+                    <article class="tarjeta-experiencia">
+                        <div class="icono-experiencia icono-bosque">♧</div>
+                        <p class="categoria-tarjeta">Naturaleza</p>
+                        <h3>Bosque nuboso</h3>
+                        <p>Descubrí aves, helechos y neblina sobre puentes colgantes.</p>
+                        <button class="boton-guardar" type="button" data-id="bosque" data-nombre="Bosque nuboso" aria-pressed="false">
+                            <span>♡</span> Guardar
+                        </button>
+                    </article>
+
+                    <article class="tarjeta-experiencia">
+                        <div class="icono-experiencia icono-canoa">⌁</div>
+                        <p class="categoria-tarjeta">Exploración</p>
+                        <h3>Canales de Tortuguero</h3>
+                        <p>Navegá en silencio y observá la vida silvestre desde el agua.</p>
+                        <button class="boton-guardar" type="button" data-id="tortuguero" data-nombre="Canales de Tortuguero" aria-pressed="false">
+                            <span>♡</span> Guardar
+                        </button>
+                    </article>
+
+                    <article class="tarjeta-experiencia">
+                        <div class="icono-experiencia icono-cascada">◆</div>
+                        <p class="categoria-tarjeta">Bienestar</p>
+                        <h3>Catarata escondida</h3>
+                        <p>Refrescate en una poza natural rodeada de vegetación.</p>
+                        <button class="boton-guardar" type="button" data-id="catarata" data-nombre="Catarata escondida" aria-pressed="false">
+                            <span>♡</span> Guardar
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion mi-ruta" id="mi-ruta">
+            <div class="contenedor panel-ruta">
+                <div class="ruta-presentacion">
+                    <p class="etiqueta">Guardado en este dispositivo</p>
+                    <h2>Mi próxima ruta</h2>
+                    <p>Tu selección permanece disponible aunque cerrés la página, gracias al almacenamiento local del navegador.</p>
+                </div>
+                <div class="ruta-lista">
+                    <ul id="listaFavoritos" aria-live="polite">
+                        <li class="lista-vacia">Todavía no guardaste experiencias.</li>
+                    </ul>
+                    <button class="boton-limpiar" id="limpiarFavoritos" type="button">Limpiar mi ruta</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion planear" id="planear">
+            <div class="contenedor planear-grid">
+                <div class="planear-texto">
+                    <p class="etiqueta etiqueta-verde">Empezá por una idea</p>
+                    <h2>¿Cuál sería tu paseo ideal?</h2>
+                    <p>Contanos qué tipo de experiencia buscás. Este formulario practica validación con JavaScript y responde sin recargar la página.</p>
+
+                    <ul class="lista-beneficios">
+                        <li><span>✓</span> Ideas para diferentes presupuestos</li>
+                        <li><span>✓</span> Opciones para todo el año</li>
+                        <li><span>✓</span> Recomendaciones responsables</li>
+                    </ul>
+                </div>
+
+                <form class="formulario" id="formularioVisita" novalidate>
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamás?">
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="nombre@correo.com">
+                    </div>
+
+                    <div class="campo">
+                        <label for="tipoPaseo">Tipo de paseo</label>
+                        <select id="tipoPaseo" name="tipoPaseo">
+                            <option value="">Seleccioná una opción</option>
+                            <option value="aventura">Aventura</option>
+                            <option value="naturaleza">Naturaleza</option>
+                            <option value="cultura">Cultura y gastronomía</option>
+                            <option value="descanso">Playa y descanso</option>
+                        </select>
+                    </div>
+
+                    <button class="boton boton-principal boton-formulario" type="submit">Enviar mi idea</button>
+                    <p class="mensaje-formulario" id="mensajeFormulario" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="contenedor pie-contenido">
+            <div>
+                <a class="logo logo-pie" href="#inicio"><span class="logo-icono">◉</span> Pura<span>Ruta</span></a>
+                <p>Una práctica de HTML, CSS y JavaScript inspirada en Costa Rica.</p>
+                <p class="creditos-fotos">
+                    Fotografías:
+                    <a href="https://commons.wikimedia.org/wiki/File:Camino_de_Costa_Rica_Ave_Sol_River_Sanctuary_Volc%C3%A1n_Turrialba_River_Pacuare.jpg" target="_blank" rel="noopener">Pigment-Ink</a>,
+                    <a href="https://commons.wikimedia.org/wiki/File:Arenal_volcano_(70785p)_(cropped).jpg" target="_blank" rel="noopener">Rhododendrites</a>,
+                    <a href="https://commons.wikimedia.org/wiki/File:Monteverde_Reserve_Costa_Rica_02.jpg" target="_blank" rel="noopener">Cephas</a> y
+                    <a href="https://commons.wikimedia.org/wiki/File:Playa_de_Punta_Uva,_Costa_Rica.jpg" target="_blank" rel="noopener">Jaimedelamata</a>, vía Wikimedia Commons (CC BY-SA).
+                </p>
+            </div>
+            <div class="pie-enlaces">
+                <a href="#destinos">Destinos</a>
+                <a href="#experiencias">Experiencias</a>
+                <a href="#planear">Contacto</a>
+            </div>
+            <p class="derechos">© <span id="anioActual"></span> Pura Ruta</p>
+        </div>
+    </footer>
+
+    <div class="notificacion" id="notificacion" role="status" aria-live="polite"></div>
+
+    <!-- JavaScript externo al final para cargar primero el contenido -->
+    <script src="js/script.js"></script>
+</body>
+</html>

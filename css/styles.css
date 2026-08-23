@@ -1,0 +1,1077 @@
+/* =========================================
+   1. Variables, reseteo y estilos generales
+   ========================================= */
+:root {
+    --verde-oscuro: #174c40;
+    --verde: #2f7d65;
+    --verde-claro: #dff4eb;
+    --menta-luz: #a7e3ca;
+    --crema: #f3f5f4;
+    --blanco: #ffffff;
+    --texto: #26332f;
+    --texto-suave: #68736f;
+    --borde: #dce4e0;
+    --sombra: 0 16px 45px rgba(38, 51, 47, 0.12);
+    --radio: 22px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--texto);
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.modo-oscuro {
+    --crema: #101916;
+    --blanco: #18231f;
+    --texto: #edf5f1;
+    --texto-suave: #afbeb7;
+    --borde: #30423b;
+    --verde: #78c9aa;
+    --verde-claro: #234137;
+    --menta-luz: #8fd8ba;
+    --sombra: 0 16px 45px rgba(0, 0, 0, 0.28);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contenedor {
+    margin: 0 auto;
+    max-width: 1180px;
+    width: calc(100% - 40px);
+}
+
+.seccion {
+    padding: 88px 0;
+}
+
+.saltar-contenido {
+    background: var(--menta-luz);
+    color: #14251f;
+    left: 16px;
+    padding: 10px 16px;
+    position: fixed;
+    top: -60px;
+    z-index: 1000;
+}
+
+.saltar-contenido:focus {
+    top: 16px;
+}
+
+.etiqueta {
+    color: var(--menta-luz);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.etiqueta-verde {
+    color: var(--verde);
+}
+
+.titulo-seccion {
+    align-items: end;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    margin-bottom: 38px;
+}
+
+.titulo-seccion h2,
+.planear-texto h2,
+.ruta-presentacion h2 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+.titulo-seccion > p {
+    color: var(--texto-suave);
+    max-width: 430px;
+}
+
+/* =========================================
+   2. Encabezado y navegación
+   ========================================= */
+.encabezado {
+    background-color: rgba(247, 244, 236, 0.94);
+    border-bottom: 1px solid rgba(18, 55, 42, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.modo-oscuro .encabezado {
+    background-color: rgba(13, 25, 21, 0.94);
+    border-bottom-color: var(--borde);
+}
+
+.navegacion {
+    align-items: center;
+    display: flex;
+    height: 74px;
+    justify-content: space-between;
+}
+
+.logo {
+    align-items: center;
+    display: flex;
+    font-size: 1.28rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+.logo span:not(.logo-icono) {
+    color: var(--verde);
+}
+
+.logo-icono {
+    align-items: center;
+    background: var(--verde);
+    border-radius: 50%;
+    color: var(--menta-luz);
+    display: inline-flex;
+    height: 32px;
+    justify-content: center;
+    margin-right: 8px;
+    width: 32px;
+}
+
+.menu-navegacion {
+    align-items: center;
+    display: flex;
+    gap: 26px;
+}
+
+.menu-navegacion a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.menu-navegacion > a:not(.enlace-guardados)::after {
+    background: var(--verde);
+    bottom: -7px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+    width: 100%;
+}
+
+.menu-navegacion > a:hover::after {
+    transform: scaleX(1);
+}
+
+.enlace-guardados {
+    align-items: center;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    display: flex;
+    gap: 8px;
+    padding: 7px 12px;
+}
+
+.enlace-guardados span {
+    align-items: center;
+    background: var(--verde);
+    border-radius: 50%;
+    color: white;
+    display: inline-flex;
+    font-size: 0.72rem;
+    height: 22px;
+    justify-content: center;
+    width: 22px;
+}
+
+.boton-tema,
+.boton-menu {
+    background: transparent;
+    border: 0;
+    color: var(--texto);
+    cursor: pointer;
+}
+
+.boton-tema {
+    align-items: center;
+    border: 1px solid var(--borde);
+    border-radius: 50%;
+    display: flex;
+    font-size: 1.2rem;
+    height: 38px;
+    justify-content: center;
+    transition: background-color 0.25s, transform 0.25s;
+    width: 38px;
+}
+
+.boton-tema:hover {
+    background: var(--verde-claro);
+    transform: rotate(10deg);
+}
+
+.boton-menu {
+    display: none;
+}
+
+/* =========================================
+   3. Sección principal
+   ========================================= */
+.hero {
+    align-items: center;
+    color: white;
+    display: flex;
+    min-height: calc(100vh - 74px);
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-fondo {
+    background-image:
+        linear-gradient(90deg, rgba(7, 32, 23, 0.91) 0%, rgba(7, 32, 23, 0.68) 48%, rgba(7, 32, 23, 0.12) 100%),
+        url("../img/bosque-principal.jpg");
+    background-position: center;
+    background-size: cover;
+    inset: 0;
+    position: absolute;
+    transform: scale(1.03);
+}
+
+.hero-fondo::after {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+    content: "";
+    inset: 0;
+    opacity: 0.45;
+    position: absolute;
+}
+
+.hero-contenido {
+    padding: 90px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6.7rem);
+    letter-spacing: -0.065em;
+    line-height: 0.97;
+    max-width: 940px;
+}
+
+.hero-texto {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.05rem;
+    margin: 26px 0 34px;
+    max-width: 610px;
+}
+
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.boton {
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    padding: 13px 24px;
+    transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+}
+
+.boton:hover {
+    transform: translateY(-3px);
+}
+
+.boton-principal {
+    background-color: var(--menta-luz);
+    box-shadow: 0 10px 25px rgba(75, 159, 130, 0.25);
+    color: #183029;
+}
+
+.boton-secundario {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: white;
+}
+
+.boton-secundario:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.hora-local {
+    align-items: center;
+    bottom: 35px;
+    display: flex;
+    gap: 12px;
+    position: absolute;
+    right: 0;
+}
+
+.hora-local strong,
+.hora-local small {
+    display: block;
+}
+
+.hora-local strong {
+    font-size: 1.1rem;
+}
+
+.hora-local small {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.7rem;
+}
+
+.punto-activo {
+    animation: pulso 1.6s infinite;
+    background: #74e5a8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(116, 229, 168, 0.18);
+    height: 9px;
+    width: 9px;
+}
+
+@keyframes pulso {
+    50% { box-shadow: 0 0 0 9px rgba(116, 229, 168, 0.04); }
+}
+
+/* =========================================
+   4. Carrusel
+   ========================================= */
+.destinos {
+    background: var(--blanco);
+}
+
+.carrusel {
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    min-height: 520px;
+    overflow: hidden;
+    position: relative;
+}
+
+.pista-carrusel,
+.diapositiva {
+    min-height: 520px;
+}
+
+.diapositiva {
+    align-items: end;
+    background-position: center;
+    background-size: cover;
+    display: none;
+    padding: 54px;
+    position: relative;
+}
+
+.diapositiva::before {
+    background: linear-gradient(90deg, rgba(8, 28, 21, 0.92), rgba(8, 28, 21, 0.34) 70%, rgba(8, 28, 21, 0.1));
+    content: "";
+    inset: 0;
+    position: absolute;
+}
+
+.diapositiva.activa {
+    animation: aparecer 0.55s ease;
+    display: flex;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(1.015); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.diapositiva-arenal {
+    background-image: url("../img/ruta-arenal.jpg");
+}
+
+.diapositiva-monteverde {
+    background-image: url("../img/ruta-monteverde.jpg");
+}
+
+.diapositiva-caribe {
+    background-image: url("../img/ruta-caribe.jpg");
+}
+
+.contenido-diapositiva {
+    color: white;
+    max-width: 650px;
+    position: relative;
+    z-index: 1;
+}
+
+.numero-ruta {
+    color: var(--menta-luz);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.contenido-diapositiva .categoria {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 18px 0 10px;
+    text-transform: uppercase;
+}
+
+.contenido-diapositiva h3 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.contenido-diapositiva > p:last-of-type {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 18px 0 22px;
+    max-width: 560px;
+}
+
+.contenido-diapositiva a {
+    border-bottom: 2px solid var(--menta-luz);
+    font-weight: 700;
+    padding-bottom: 4px;
+}
+
+.contenido-diapositiva a span {
+    color: var(--menta-luz);
+    margin-left: 7px;
+}
+
+.control-carrusel {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+    height: 46px;
+    justify-content: center;
+    position: absolute;
+    right: 28px;
+    transition: background-color 0.25s;
+    width: 46px;
+    z-index: 2;
+}
+
+.control-carrusel:hover {
+    background: var(--verde);
+}
+
+.anterior {
+    bottom: 85px;
+}
+
+.siguiente {
+    bottom: 30px;
+}
+
+.indicadores {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    right: 94px;
+    top: 28px;
+    z-index: 2;
+}
+
+.indicador {
+    background: rgba(255, 255, 255, 0.42);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    height: 7px;
+    transition: width 0.25s, background-color 0.25s;
+    width: 25px;
+}
+
+.indicador.activo {
+    background: var(--menta-luz);
+    width: 48px;
+}
+
+.estado-carrusel {
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
+/* =========================================
+   5. Tarjetas de experiencias
+   ========================================= */
+.titulo-centrado {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.titulo-centrado > p {
+    max-width: 620px;
+}
+
+.galeria-experiencias {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.tarjeta-experiencia {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 30px;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.tarjeta-experiencia:hover {
+    border-color: var(--verde);
+    box-shadow: var(--sombra);
+    transform: translateY(-7px);
+}
+
+.icono-experiencia {
+    align-items: center;
+    border-radius: 16px;
+    display: flex;
+    font-size: 1.8rem;
+    font-weight: 700;
+    height: 58px;
+    justify-content: center;
+    margin-bottom: 30px;
+    width: 58px;
+}
+
+.icono-volcan,
+.icono-cascada {
+    background: #e8eeeb;
+    color: #53645d;
+}
+
+.icono-cafe,
+.icono-canoa {
+    background: #d8eee5;
+    color: #347a63;
+}
+
+.icono-mar {
+    background: #dcebea;
+    color: #3e7773;
+}
+
+.icono-bosque {
+    background: var(--verde-claro);
+    color: var(--verde);
+}
+
+.categoria-tarjeta {
+    color: var(--verde);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.tarjeta-experiencia h3 {
+    font-size: 1.24rem;
+    margin: 5px 0 10px;
+}
+
+.tarjeta-experiencia > p:not(.categoria-tarjeta) {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    min-height: 70px;
+}
+
+.boton-guardar {
+    background: transparent;
+    border: 0;
+    color: var(--texto);
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.boton-guardar span {
+    color: var(--verde);
+    font-size: 1.3rem;
+    margin-right: 5px;
+}
+
+.boton-guardar.guardado span {
+    color: #d85b62;
+}
+
+/* =========================================
+   6. Lista guardada y formulario
+   ========================================= */
+.mi-ruta {
+    background: var(--verde-oscuro);
+    color: white;
+}
+
+.panel-ruta {
+    align-items: center;
+    display: grid;
+    gap: 70px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.ruta-presentacion p:last-child {
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 18px;
+    max-width: 520px;
+}
+
+.ruta-lista {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radio);
+    padding: 30px;
+}
+
+.ruta-lista ul {
+    list-style: none;
+}
+
+.ruta-lista li {
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    display: flex;
+    gap: 11px;
+    padding: 10px 0;
+}
+
+.ruta-lista li::before {
+    color: var(--menta-luz);
+    content: "✓";
+    font-weight: 700;
+}
+
+.ruta-lista .lista-vacia {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.ruta-lista .lista-vacia::before {
+    content: "○";
+}
+
+.boton-limpiar {
+    background: transparent;
+    border: 0;
+    color: var(--menta-luz);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.boton-limpiar:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.planear {
+    background: var(--blanco);
+}
+
+.planear-grid {
+    align-items: center;
+    display: grid;
+    gap: 80px;
+    grid-template-columns: 0.9fr 1.1fr;
+}
+
+.planear-texto > p:not(.etiqueta) {
+    color: var(--texto-suave);
+    margin: 20px 0 28px;
+}
+
+.lista-beneficios {
+    list-style: none;
+}
+
+.lista-beneficios li {
+    margin: 12px 0;
+}
+
+.lista-beneficios span {
+    align-items: center;
+    background: var(--verde-claro);
+    border-radius: 50%;
+    color: var(--verde);
+    display: inline-flex;
+    height: 26px;
+    justify-content: center;
+    margin-right: 10px;
+    width: 26px;
+}
+
+.formulario {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 38px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.83rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo select {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 11px;
+    color: var(--texto);
+    outline: none;
+    padding: 13px 14px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(35, 130, 95, 0.13);
+}
+
+.campo input.campo-error,
+.campo select.campo-error {
+    border-color: #c64e55;
+}
+
+.boton-formulario {
+    width: 100%;
+}
+
+.mensaje-formulario {
+    border-radius: 10px;
+    display: none;
+    font-size: 0.84rem;
+    margin-top: 16px;
+    padding: 11px 14px;
+}
+
+.mensaje-formulario.error,
+.mensaje-formulario.exito {
+    display: block;
+}
+
+.mensaje-formulario.error {
+    background: #fce4e5;
+    color: #8e2c33;
+}
+
+.mensaje-formulario.exito {
+    background: var(--verde-claro);
+    color: var(--verde);
+}
+
+/* =========================================
+   7. Pie de página y notificación
+   ========================================= */
+.pie-pagina {
+    background: #091b14;
+    color: white;
+    padding: 55px 0;
+}
+
+.pie-contenido {
+    align-items: center;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1.5fr 1fr auto;
+}
+
+.logo-pie {
+    display: inline-flex;
+    margin-bottom: 13px;
+}
+
+.pie-contenido > div:first-child p,
+.derechos {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.78rem;
+}
+
+.creditos-fotos {
+    margin-top: 7px;
+    max-width: 600px;
+}
+
+.creditos-fotos a {
+    color: var(--menta-luz);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.pie-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.pie-enlaces a {
+    font-size: 0.82rem;
+}
+
+.notificacion {
+    background: var(--verde-oscuro);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    bottom: 24px;
+    color: white;
+    font-size: 0.85rem;
+    opacity: 0;
+    padding: 12px 18px;
+    pointer-events: none;
+    position: fixed;
+    right: 24px;
+    transform: translateY(25px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 200;
+}
+
+.notificacion.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   8. Diseño adaptable (mobile-first inverso)
+   ========================================= */
+@media (max-width: 900px) {
+    .boton-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px;
+    }
+
+    .boton-menu span {
+        background: var(--texto);
+        display: block;
+        height: 2px;
+        transition: transform 0.25s, opacity 0.25s;
+        width: 24px;
+    }
+
+    .boton-menu.activo span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .boton-menu.activo span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .boton-menu.activo span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .menu-navegacion {
+        align-items: stretch;
+        background: var(--blanco);
+        border-bottom: 1px solid var(--borde);
+        box-shadow: var(--sombra);
+        display: none;
+        flex-direction: column;
+        gap: 18px;
+        left: 0;
+        padding: 26px 20px;
+        position: absolute;
+        top: 74px;
+        width: 100%;
+    }
+
+    .menu-navegacion.abierto {
+        display: flex;
+    }
+
+    .enlace-guardados {
+        justify-content: space-between;
+    }
+
+    .boton-tema {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .galeria-experiencias {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .panel-ruta,
+    .planear-grid {
+        gap: 45px;
+        grid-template-columns: 1fr;
+    }
+
+    .pie-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .logo-pie {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .contenedor {
+        width: calc(100% - 30px);
+    }
+
+    .seccion {
+        padding: 65px 0;
+    }
+
+    .hero {
+        min-height: 720px;
+    }
+
+    .hero-fondo {
+        background-image:
+            linear-gradient(180deg, rgba(7, 32, 23, 0.72), rgba(7, 32, 23, 0.95)),
+            url("../img/bosque-principal.jpg");
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem, 15vw, 4.6rem);
+    }
+
+    .hero-botones {
+        align-items: stretch;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hora-local {
+        bottom: -45px;
+        left: 0;
+        right: auto;
+    }
+
+    .titulo-seccion {
+        align-items: start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .carrusel,
+    .pista-carrusel,
+    .diapositiva {
+        min-height: 560px;
+    }
+
+    .diapositiva {
+        padding: 35px 25px 95px;
+    }
+
+    .diapositiva::before {
+        background: linear-gradient(0deg, rgba(8, 28, 21, 0.96), rgba(8, 28, 21, 0.28));
+    }
+
+    .control-carrusel {
+        bottom: 25px;
+        top: auto;
+    }
+
+    .anterior {
+        left: 25px;
+        right: auto;
+    }
+
+    .siguiente {
+        right: 25px;
+    }
+
+    .indicadores {
+        bottom: 44px;
+        left: 50%;
+        right: auto;
+        top: auto;
+        transform: translateX(-50%);
+    }
+
+    .galeria-experiencias {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-experiencia > p:not(.categoria-tarjeta) {
+        min-height: auto;
+    }
+
+    .formulario,
+    .ruta-lista {
+        padding: 24px;
+    }
+
+    .notificacion {
+        bottom: 14px;
+        left: 15px;
+        right: 15px;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .punto-activo {
+        animation: none;
+    }
+}
